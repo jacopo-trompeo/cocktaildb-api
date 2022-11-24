@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   firstLetter!: string;
   paginationLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   drinks: DrinkType[] = [];
-  featuredDrink: DrinkType = {} as DrinkType;
+  featuredDrink!: DrinkType;
 
   constructor(private apiService: ApiService) {}
 

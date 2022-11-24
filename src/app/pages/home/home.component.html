@@ -2,6 +2,7 @@
   class="card mx-auto mt-5"
   style="max-width: 50rem; cursor: pointer"
   [routerLink]="'/drinks/' + featuredDrink.id"
+  *ngIf="featuredDrink"
 >
   <div class="row g-0">
     <div class="col-md-4">

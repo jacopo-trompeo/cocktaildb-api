@@ -20,7 +20,14 @@ import { IngredientComponent } from './pages/ingredient/ingredient.component';
     SearchComponent,
     IngredientComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    BlockUIModule.forRoot(),
+    BlockUIHttpModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
