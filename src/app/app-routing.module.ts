@@ -6,7 +6,7 @@ import { DrinkComponent } from './pages/drink/drink.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 
-import { DrinkByIdResolver } from './_resolvers/DrinkById.resolver';
+import { DrinkByIdResolver } from './_resolvers/drinkbyid.resolver';
 
 const routes: Routes = [
   {
