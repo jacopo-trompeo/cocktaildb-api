@@ -29,14 +29,12 @@ export class HomeComponent implements OnInit {
       .getDrinksByFirstLetter(this.firstLetter)
       .subscribe((drinks) => {
         this.drinks = drinks;
-        console.table(this.drinks);
       });
   }
 
   getFeaturedDrink() {
     this.apiService.getRandomDrink().subscribe((drink) => {
       this.featuredDrink = drink;
-      console.table(this.featuredDrink);
     });
   }
 }
