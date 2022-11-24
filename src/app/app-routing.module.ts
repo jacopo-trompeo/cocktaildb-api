@@ -8,6 +8,7 @@ import { IngredientComponent } from './pages/ingredient/ingredient.component';
 
 import { DrinkByIdResolver } from './_resolvers/drink-by-id.resolver';
 import { FeaturedDrinkResolver } from './_resolvers/featured-drink.resolver';
+import { DrinksByLetterResolver } from './_resolvers/drinks-by-letter.resolver';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     component: HomeComponent,
     resolve: {
       featuredDrink: FeaturedDrinkResolver,
+      drinks: DrinksByLetterResolver,
     },
   },
   {

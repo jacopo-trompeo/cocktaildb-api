@@ -18,24 +18,23 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.firstLetter = localStorage.getItem('firstLetter') || 'A';
 
-    this.getFeaturedDrink();
-    this.getDrinksByFirstLetter();
+    this.route.data.subscribe(({ featuredDrink }) => {
+      this.featuredDrink = featuredDrink;
+    });
+
+    this.route.data.subscribe(({ drinks }) => {
+      this.drinks = drinks;
+    });
   }
 
-  getDrinksByFirstLetter(firstLetter: string = this.firstLetter) {
+  getDrinksByFirstLetter(firstLetter: string) {
     this.firstLetter = firstLetter;
-    localStorage.setItem('firstLetter', this.firstLetter);
+    localStorage.setItem('firstLetter', firstLetter);
 
     this.apiService
       .getDrinksByFirstLetter(this.firstLetter)
       .subscribe((drinks) => {
         this.drinks = drinks;
       });
-  }
-
-  getFeaturedDrink() {
-    this.route.data.subscribe(({ featuredDrink }) => {
-      this.featuredDrink = featuredDrink;
-    });
   }
 }
