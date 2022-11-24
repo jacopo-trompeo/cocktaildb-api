@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/_services/api.service';
 import { DrinkType, IngredientType } from 'src/app/_models/drink.model';
 
 @Component({
@@ -12,18 +11,16 @@ export class IngredientComponent implements OnInit {
   ingredientDetails!: IngredientType;
   emptyResult = false;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const ingredient = this.route.snapshot.paramMap.get('name') || '';
-
-    this.getIngredientDetails(ingredient);
-    this.getDrinksByIngredient(ingredient);
+    this.getIngredientDetails();
+    this.getDrinksByIngredient();
   }
 
-  getIngredientDetails(ingredient: string) {
-    this.apiService.getIngredientByName(ingredient).subscribe((ingredient) => {
-      if (!ingredient) {
+  getIngredientDetails() {
+    this.route.data.subscribe(({ ingredient }) => {
+      if (Object.keys(ingredient).length === 0) {
         this.emptyResult = true;
         return;
       }
@@ -32,8 +29,8 @@ export class IngredientComponent implements OnInit {
     });
   }
 
-  getDrinksByIngredient(ingredient: string) {
-    this.apiService.getDrinksByIngredient(ingredient).subscribe((drinks) => {
+  getDrinksByIngredient() {
+    this.route.data.subscribe(({ drinks }) => {
       this.drinks = drinks;
     });
   }

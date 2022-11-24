@@ -168,7 +168,7 @@ export class ApiService {
       .pipe(
         map((res) => {
           if (!res.ingredients) {
-            return null;
+            return {} as IngredientType;
           }
 
           const ingredient = res.ingredients[0];

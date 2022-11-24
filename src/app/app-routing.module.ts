@@ -9,6 +9,8 @@ import { IngredientComponent } from './pages/ingredient/ingredient.component';
 import { DrinkByIdResolver } from './_resolvers/drink-by-id.resolver';
 import { FeaturedDrinkResolver } from './_resolvers/featured-drink.resolver';
 import { DrinksByLetterResolver } from './_resolvers/drinks-by-letter.resolver';
+import { DrinksByIngredientResolver } from './_resolvers/drinks-by-ingredient.resolver';
+import { IngredientByNameResolver } from './_resolvers/ingredient-by-name.resolver';
 
 const routes: Routes = [
   {
@@ -33,6 +35,10 @@ const routes: Routes = [
   {
     path: 'ingredients/:name',
     component: IngredientComponent,
+    resolve: {
+      drinks: DrinksByIngredientResolver,
+      ingredient: IngredientByNameResolver,
+    },
   },
   { path: '**', redirectTo: '' },
 ];
