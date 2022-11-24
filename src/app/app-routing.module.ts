@@ -20,7 +20,7 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'ingredients/',
+    path: 'ingredients/:name',
     component: IngredientComponent,
   },
   { path: '**', redirectTo: '' },

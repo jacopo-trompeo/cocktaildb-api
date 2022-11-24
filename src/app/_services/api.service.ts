@@ -4,7 +4,10 @@ import { map } from 'rxjs';
 import {
   DrinkApiResType,
   DrinkDetailType,
+  DrinksByIngredientApiResType,
   DrinkType,
+  IngredientApiResType,
+  IngredientType,
 } from '../_models/drink.model';
 
 @Injectable({
@@ -110,5 +113,52 @@ export class ApiService {
         } as DrinkType;
       })
     );
+  }
+
+  getDrinksByIngredient(ingredient: string) {
+    return this.http
+      .get<DrinksByIngredientApiResType>(
+        `${this.BASE_URL}/filter.php?i=${ingredient}`
+      )
+      .pipe(
+        map((res) => {
+          if (!res.drinks) {
+            return [];
+          }
+
+          return res.drinks
+            .map((drink) => {
+              return {
+                id: drink.idDrink,
+                name: drink.strDrink,
+                image: drink.strDrinkThumb,
+              } as DrinkType;
+            })
+            .sort(this.compareDrinkNames);
+        })
+      );
+  }
+
+  getIngredientByName(name: string) {
+    return this.http
+      .get<IngredientApiResType>(`${this.BASE_URL}/search.php?i=${name}`)
+      .pipe(
+        map((res) => {
+          if (!res.ingredients) {
+            return null;
+          }
+
+          const ingredient = res.ingredients[0];
+
+          return {
+            name: ingredient.strIngredient,
+            description: ingredient.strDescription,
+            type: ingredient.strType,
+            alcohol: ingredient.strAlcohol,
+            abv: ingredient.strABV,
+            image: `https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`,
+          } as IngredientType;
+        })
+      );
   }
 }

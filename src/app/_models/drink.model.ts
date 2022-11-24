@@ -43,11 +43,10 @@ export interface DrinkApiResType {
     'strInstructionsZH-HANT'?: string;
   }[];
 }
-
 export interface DrinkType {
   id: string;
   name: string;
-  category: string;
+  category?: string;
   image: string;
 }
 
@@ -60,4 +59,31 @@ export interface DrinkDetailType extends DrinkType {
     language: string;
     text: string;
   }[];
+}
+
+export interface DrinksByIngredientApiResType {
+  drinks: {
+    strDrink: string;
+    strDrinkThumb: string;
+    idDrink: string;
+  }[];
+}
+
+export interface IngredientApiResType {
+  ingredients: {
+    strIngredient: string;
+    strDescription: string;
+    strType: string;
+    strAlcohol: string;
+    strABV: string;
+  }[];
+}
+
+export interface IngredientType {
+  name: string;
+  description: string;
+  type: string;
+  alcohol: string;
+  abv: string;
+  image: string;
 }
