@@ -6,12 +6,16 @@ import { DrinkComponent } from './pages/drink/drink.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 
-import { DrinkByIdResolver } from './_resolvers/drinkbyid.resolver';
+import { DrinkByIdResolver } from './_resolvers/drink-by-id.resolver';
+import { FeaturedDrinkResolver } from './_resolvers/featured-drink.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    resolve: {
+      featuredDrink: FeaturedDrinkResolver,
+    },
   },
   {
     path: 'drinks/:id',

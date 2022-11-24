@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../_services/api.service';
 import { DrinkType } from 'src/app/_models/drink.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   drinks: DrinkType[] = [];
   featuredDrink!: DrinkType;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.firstLetter = localStorage.getItem('firstLetter') || 'A';
@@ -33,8 +34,8 @@ export class HomeComponent implements OnInit {
   }
 
   getFeaturedDrink() {
-    this.apiService.getRandomDrink().subscribe((drink) => {
-      this.featuredDrink = drink;
+    this.route.data.subscribe(({ featuredDrink }) => {
+      this.featuredDrink = featuredDrink;
     });
   }
 }
