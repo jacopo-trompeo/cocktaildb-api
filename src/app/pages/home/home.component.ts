@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.firstLetter = localStorage.getItem('firstLetter') || 'A';
 
     this.getFeaturedDrink();
