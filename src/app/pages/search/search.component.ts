@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { DrinkType } from 'src/app/_models/drink.model';
 
@@ -7,8 +6,15 @@ import { DrinkType } from 'src/app/_models/drink.model';
   selector: 'app-search',
   templateUrl: './search.component.html',
 })
-export class SearchComponent implements OnInit {
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+export class SearchComponent {
+  searchQuery!: string;
+  drinks: DrinkType[] = [];
 
-  ngOnInit() {}
+  constructor(private apiService: ApiService) {}
+
+  searchDrinks() {
+    this.apiService.getDrinksByName(this.searchQuery).subscribe((drinks) => {
+      this.drinks = drinks;
+    });
+  }
 }

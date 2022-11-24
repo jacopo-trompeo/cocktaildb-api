@@ -1,0 +1,18 @@
+<h1>Search</h1>
+
+<form>
+  <div class="mb-3">
+    <label for="drinkName" class="form-label">Drink name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="drinkName"
+      name="drinkName"
+      placeholder="Look for a drink..."
+      [(ngModel)]="searchQuery"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="searchDrinks()">
+    Search
+  </button>
+</form>

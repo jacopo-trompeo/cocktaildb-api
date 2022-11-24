@@ -16,7 +16,7 @@ const routes: Routes = [
     component: DrinkComponent,
   },
   {
-    path: 'search/',
+    path: 'search',
     component: SearchComponent,
   },
   {

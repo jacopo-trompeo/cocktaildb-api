@@ -101,6 +101,29 @@ export class ApiService {
       );
   }
 
+  getDrinksByName(name: string) {
+    return this.http
+      .get<DrinkApiResType>(`${this.BASE_URL}/search.php?s=${name}`)
+      .pipe(
+        map((res) => {
+          if (!res.drinks) {
+            return [];
+          }
+
+          return res.drinks
+            .map((drink) => {
+              return {
+                id: drink.idDrink,
+                name: drink.strDrink,
+                category: drink.strCategory,
+                image: drink.strDrinkThumb,
+              } as DrinkType;
+            })
+            .sort(this.compareDrinkNames);
+        })
+      );
+  }
+
   getRandomDrink() {
     return this.http.get<DrinkApiResType>(`${this.BASE_URL}/random.php`).pipe(
       map((res) => {
