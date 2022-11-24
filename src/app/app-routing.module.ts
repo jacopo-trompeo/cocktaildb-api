@@ -12,7 +12,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'drink/',
+    path: 'drinks/:id',
     component: DrinkComponent,
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'ingredient/',
+    path: 'ingredients/',
     component: IngredientComponent,
   },
   { path: '**', redirectTo: '' },

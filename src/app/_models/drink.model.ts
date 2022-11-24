@@ -50,3 +50,14 @@ export interface DrinkType {
   category: string;
   image: string;
 }
+
+export interface DrinkDetailType extends DrinkType {
+  ingredients: {
+    name: string;
+    measure: string;
+  }[];
+  instructions: {
+    language: string;
+    text: string;
+  }[];
+}

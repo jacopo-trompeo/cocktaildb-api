@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { DrinkApiResType, DrinkType } from '../_models/drink.model';
+import {
+  DrinkApiResType,
+  DrinkDetailType,
+  DrinkType,
+} from '../_models/drink.model';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +46,54 @@ export class ApiService {
               } as DrinkType;
             })
             .sort(this.compareDrinkNames);
+        })
+      );
+  }
+
+  getDrinkById(id: string) {
+    return this.http
+      .get<DrinkApiResType>(`${this.BASE_URL}/lookup.php?i=${id}`)
+      .pipe(
+        map((res) => {
+          if (!res.drinks) {
+            return null;
+          }
+
+          const drink = res.drinks[0];
+
+          const ingredients = [];
+          const instructions = [];
+
+          for (const key in drink) {
+            const keyName = key as keyof typeof drink;
+
+            if (key.startsWith('strIngredient') && drink[keyName]) {
+              const index = keyName.replace('strIngredient', '');
+              const measureKey = `strMeasure${index}` as keyof typeof drink;
+              ingredients.push({
+                name: drink[keyName],
+                measure: drink[measureKey] || '',
+              });
+            }
+
+            if (key.startsWith('strInstructions') && drink[keyName]) {
+              let language = keyName.replace('strInstructions', '') || 'EN';
+
+              instructions.push({
+                language,
+                text: drink[keyName],
+              });
+            }
+          }
+
+          return {
+            id: drink.idDrink,
+            name: drink.strDrink,
+            category: drink.strCategory,
+            image: drink.strDrinkThumb,
+            ingredients,
+            instructions,
+          } as DrinkDetailType;
         })
       );
   }
