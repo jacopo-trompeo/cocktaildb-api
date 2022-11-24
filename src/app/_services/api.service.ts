@@ -28,6 +28,10 @@ export class ApiService {
       .get<DrinkApiResType>(`${this.BASE_URL}/search.php?f=${firstLetter}`)
       .pipe(
         map((res) => {
+          if (!res.drinks) {
+            return [];
+          }
+
           return res.drinks
             .map((drink) => {
               return {
