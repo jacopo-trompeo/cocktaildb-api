@@ -59,7 +59,7 @@ export class ApiService {
       .pipe(
         map((res) => {
           if (!res.drinks) {
-            return null;
+            return {} as DrinkDetailType;
           }
 
           const drink = res.drinks[0];

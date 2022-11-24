@@ -6,6 +6,8 @@ import { DrinkComponent } from './pages/drink/drink.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 
+import { DrinkByIdResolver } from './_resolvers/DrinkById.resolver';
+
 const routes: Routes = [
   {
     path: '',
@@ -14,6 +16,9 @@ const routes: Routes = [
   {
     path: 'drinks/:id',
     component: DrinkComponent,
+    resolve: {
+      drink: DrinkByIdResolver,
+    },
   },
   {
     path: 'search',

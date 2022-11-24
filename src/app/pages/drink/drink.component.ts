@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/_services/api.service';
 import { DrinkDetailType } from 'src/app/_models/drink.model';
 
 @Component({
@@ -11,13 +10,11 @@ export class DrinkComponent implements OnInit {
   drink!: DrinkDetailType;
   emptyResult = false;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id') || '';
-
-    this.apiService.getDrinkById(id).subscribe((drink) => {
-      if (!drink) {
+    this.route.data.subscribe(({ drink }) => {
+      if (Object.keys(drink).length === 0) {
         this.emptyResult = true;
         return;
       }
