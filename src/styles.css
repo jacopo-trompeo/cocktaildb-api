@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.hoverable {
+  transition: all 0.1s ease;
+}
+
+.hoverable:hover {
+  box-shadow: 0 0 0.5rem 0.2rem rgba(0, 0, 0, 0.25);
+  scale: 1.02;
+}
