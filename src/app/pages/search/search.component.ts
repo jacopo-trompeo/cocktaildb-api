@@ -7,7 +7,7 @@ import { DrinkType } from 'src/app/_models/drink.model';
   templateUrl: './search.component.html',
 })
 export class SearchComponent {
-  searchQuery!: string;
+  searchQuery: string = '';
   drinks!: DrinkType[];
 
   constructor(private apiService: ApiService) {}
