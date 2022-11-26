@@ -8,7 +8,7 @@ import { DrinkType } from 'src/app/_models/drink.model';
 })
 export class SearchComponent {
   searchQuery!: string;
-  drinks: DrinkType[] = [];
+  drinks!: DrinkType[];
 
   constructor(private apiService: ApiService) {}
 

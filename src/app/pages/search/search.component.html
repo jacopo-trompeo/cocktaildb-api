@@ -14,4 +14,8 @@
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
+<div class="my-5" *ngIf="drinks">
+  <p class="text-muted">{{ drinks.length }} drinks found</p>
+</div>
+
 <app-drink-list [drinks]="drinks"></app-drink-list>
