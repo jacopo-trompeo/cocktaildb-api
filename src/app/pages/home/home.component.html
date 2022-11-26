@@ -1,27 +1,19 @@
-<div
-  class="card mx-auto mt-5"
-  style="max-width: 50rem; cursor: pointer"
-  [routerLink]="'/drinks/' + featuredDrink.id"
-  *ngIf="featuredDrink"
->
-  <div class="row g-0">
-    <div class="col-md-4">
+<div class="card mx-auto" style="max-width: 45rem">
+  <div class="card-header">
+    <p class="h3">Today's featured cocktail</p>
+  </div>
+  <div class="card-body row">
+    <div class="col-md-4 mb-sm-3 mb-md-0">
       <img
         [src]="featuredDrink.image"
         [alt]="featuredDrink.name"
-        class="img-fluid rounded-start"
-        *ngIf="featuredDrink.image"
+        class="img-fluid rounded"
       />
     </div>
     <div class="col-md-8">
       <div class="card-body h-100 d-flex flex-column justify-content-between">
-        <div>
-          <p class="card-text h5 text-muted" style="letter-spacing: 0.1em">
-            Today's featured drink
-          </p>
-          <h5 class="display-4 card-title">{{ featuredDrink.name }}</h5>
-        </div>
-        <p class="card-text lead">
+        <p class="display-6 fw-semibold">{{ featuredDrink.name }}</p>
+        <p class="lead">
           {{ featuredDrink.category }}
         </p>
       </div>
@@ -29,7 +21,7 @@
   </div>
 </div>
 
-<nav class="mt-5">
+<nav class="my-5">
   <ul class="pagination justify-content-center">
     <li
       class="page-item"
