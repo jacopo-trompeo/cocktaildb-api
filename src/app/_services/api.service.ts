@@ -179,7 +179,7 @@ export class ApiService {
             type: ingredient.strType,
             alcohol: ingredient.strAlcohol,
             abv: ingredient.strABV,
-            image: `https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`,
+            image: `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`,
           } as IngredientType;
         })
       );

@@ -1,0 +1,23 @@
+<div class="card mx-auto mb-5" style="max-width: 50rem; cursor: pointer">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        [src]="ingredientDetails.image"
+        [alt]="ingredientDetails.name"
+        class="img-fluid rounded-start"
+        *ngIf="ingredientDetails.image"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body h-100 d-flex flex-column justify-content-between">
+        <h5 class="display-4 card-title">{{ ingredientDetails.name }}</h5>
+
+        <p class="card-text lead">
+          {{ ingredientDetails.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-drink-list [drinks]="drinks"></app-drink-list>
