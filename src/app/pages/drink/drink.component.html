@@ -1,0 +1,39 @@
+<!-- card that shows all the drink details -->
+
+<div class="card mb-5">
+  <div class="card-header">
+    <h3>{{ drink.name }}</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4 mb-sm-5 mb-md-0">
+        <img
+          src="{{ drink.image }}"
+          alt="Drink Image"
+          class="img-fluid rounded"
+        />
+      </div>
+      <div class="col-md-8">
+        <h4>Ingredients</h4>
+        <ul>
+          <li *ngFor="let ingredient of drink.ingredients">
+            <a [routerLink]="'/ingredients/' + ingredient.name">
+              {{ ingredient.name }}, {{ ingredient.measure }}
+            </a>
+          </li>
+        </ul>
+
+        <h4 class="mt-4">Instructions</h4>
+        <p>{{ currentInstructions.text }}</p>
+
+        <button
+          class="btn btn-outline-secondary btn-lg me-3"
+          *ngFor="let instruction of drink.instructions"
+          (click)="selectLanguage(instruction.language)"
+        >
+          {{ instruction.language }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,9 +8,18 @@ import { DrinkDetailType } from 'src/app/_models/drink.model';
 })
 export class DrinkComponent implements OnInit {
   drink!: DrinkDetailType;
+  initialLanguage = 'EN';
+  currentInstructions!: { text: string; language: string };
   emptyResult = false;
 
   constructor(private route: ActivatedRoute) {}
+
+  selectLanguage(language: string = this.initialLanguage) {
+    this.currentInstructions =
+      this.drink.instructions.find(
+        (instruction) => instruction.language === language
+      ) || this.drink.instructions[0];
+  }
 
   ngOnInit() {
     this.route.data.subscribe(({ drink }) => {
@@ -20,6 +29,7 @@ export class DrinkComponent implements OnInit {
       }
 
       this.drink = drink;
+      this.selectLanguage();
     });
   }
 }
