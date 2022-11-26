@@ -1,18 +1,17 @@
-<h1>Search</h1>
+<h1 class="display-6 mb-4">Search for a drink</h1>
 
-<form>
-  <div class="mb-3">
-    <label for="drinkName" class="form-label">Drink name</label>
+<form class="d-flex gap-3 mb-5" (ngSubmit)="searchDrinks()">
+  <div class="form-group">
     <input
       type="text"
       class="form-control"
-      id="drinkName"
+      placeholder="Search by name..."
       name="drinkName"
-      placeholder="Look for a drink..."
+      id="drinkName"
       [(ngModel)]="searchQuery"
     />
   </div>
-  <button type="submit" class="btn btn-primary" (click)="searchDrinks()">
-    Search
-  </button>
+  <button type="submit" class="btn btn-primary">Search</button>
 </form>
+
+<app-drink-list [drinks]="drinks"></app-drink-list>
