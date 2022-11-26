@@ -84,6 +84,5 @@ export interface IngredientType {
   description: string;
   type: string;
   alcohol: string;
-  abv: string;
   image: string;
 }

@@ -1,23 +1,36 @@
-<div class="card mx-auto mb-5" style="max-width: 50rem; cursor: pointer">
-  <div class="row g-0">
+<div class="card mx-auto mb-5">
+  <div class="card-header">
+    <h3>{{ ingredientDetails.name }}</h3>
+  </div>
+  <div class="card-body row">
     <div class="col-md-4">
       <img
         [src]="ingredientDetails.image"
         [alt]="ingredientDetails.name"
-        class="img-fluid rounded-start"
-        *ngIf="ingredientDetails.image"
+        class="img-fluid rounded"
       />
     </div>
     <div class="col-md-8">
       <div class="card-body h-100 d-flex flex-column justify-content-between">
-        <h5 class="display-4 card-title">{{ ingredientDetails.name }}</h5>
-
-        <p class="card-text lead">
+        <p class="card-text">
           {{ ingredientDetails.description }}
         </p>
       </div>
     </div>
   </div>
+  <div class="card-footer d-flex gap-5 justify-content-evenly">
+    <small *ngIf="ingredientDetails.type">
+      <span class="fw-bold">Type:</span> {{ ingredientDetails.type }}
+    </small>
+    <small *ngIf="ingredientDetails.alcohol">
+      <span class="fw-bold">Alcohol:</span>
+      {{ ingredientDetails.alcohol }}
+    </small>
+  </div>
+</div>
+
+<div class="my-5">
+  <p class="text-muted">{{ drinks.length }} drinks found</p>
 </div>
 
 <app-drink-list [drinks]="drinks"></app-drink-list>
