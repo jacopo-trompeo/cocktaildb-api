@@ -75,7 +75,6 @@ export interface IngredientApiResType {
     strDescription: string;
     strType: string;
     strAlcohol: string;
-    strABV: string;
   }[];
 }
 
