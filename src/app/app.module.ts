@@ -15,6 +15,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 
 import { DrinkListComponent } from './shared/drink-list/drink-list.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DrinkListComponent } from './shared/drink-list/drink-list.component';
     SearchComponent,
     IngredientComponent,
     DrinkListComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
