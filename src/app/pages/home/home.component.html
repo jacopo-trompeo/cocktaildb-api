@@ -1,4 +1,8 @@
-<div class="card mx-auto" style="max-width: 45rem">
+<div
+  class="card mx-auto"
+  style="max-width: 45rem; cursor: pointer"
+  [routerLink]="'/drinks/' + featuredDrink.id"
+>
   <div class="card-header">
     <p class="h3">Today's featured cocktail</p>
   </div>
