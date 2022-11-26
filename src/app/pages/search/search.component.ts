@@ -15,6 +15,7 @@ export class SearchComponent {
   searchDrinks() {
     this.apiService.getDrinksByName(this.searchQuery).subscribe((drinks) => {
       this.drinks = drinks;
+      this.searchQuery = '';
     });
   }
 }
