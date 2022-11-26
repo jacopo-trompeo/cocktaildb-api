@@ -13,6 +13,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { DrinkComponent } from './pages/drink/drink.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
+
+import { DrinkListComponent } from './shared/drink-list/drink-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,7 @@ import { IngredientComponent } from './pages/ingredient/ingredient.component';
     DrinkComponent,
     SearchComponent,
     IngredientComponent,
+    DrinkListComponent,
   ],
   imports: [
     BrowserModule,
