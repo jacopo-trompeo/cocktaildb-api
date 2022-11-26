@@ -13,18 +13,21 @@
     <div class="col-md-8">
       <div class="card-body h-100 d-flex flex-column justify-content-between">
         <p class="card-text">
-          {{ ingredientDetails.description }}
+          {{ ingredientDetails.description || "No description available" }}
         </p>
       </div>
     </div>
   </div>
-  <div class="card-footer d-flex gap-5 justify-content-evenly">
-    <small *ngIf="ingredientDetails.type">
-      <span class="fw-bold">Type:</span> {{ ingredientDetails.type }}
+  <div
+    class="card-footer d-flex gap-5 justify-content-evenly"
+    *ngIf="ingredientDetails.type || ingredientDetails.alcohol"
+  >
+    <small>
+      <span class="fw-bold">Type:</span> {{ ingredientDetails.type || "N/A" }}
     </small>
-    <small *ngIf="ingredientDetails.alcohol">
+    <small>
       <span class="fw-bold">Alcohol:</span>
-      {{ ingredientDetails.alcohol }}
+      {{ ingredientDetails.alcohol || "N/A" }}
     </small>
   </div>
 </div>
