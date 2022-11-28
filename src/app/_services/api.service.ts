@@ -145,7 +145,7 @@ export class ApiService {
       )
       .pipe(
         map((res) => {
-          if (!res.drinks) {
+          if (!res) {
             return [];
           }
 

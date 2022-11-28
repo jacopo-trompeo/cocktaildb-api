@@ -1,4 +1,6 @@
-<div class="card mb-5">
+<h1 *ngIf="emptyResult" class="text-center display-3">No drink found</h1>
+
+<div class="card mb-5" *ngIf="!emptyResult">
   <div class="card-header">
     <h3>{{ drink.name }}</h3>
   </div>
